@@ -13,9 +13,8 @@ gem 'spring',        group: :development
 gem 'pg'
 gem 'figaro'
 gem 'devise'
+gem 'devise_invitable'
 gem 'nokogiri'
-gem 'capybara'
-gem 'poltergeist'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'slim'
 
