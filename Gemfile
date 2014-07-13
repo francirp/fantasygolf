@@ -16,6 +16,8 @@ gem 'devise'
 gem 'nokogiri'
 gem 'capybara'
 gem 'poltergeist'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'slim'
 
 
 group :development do
