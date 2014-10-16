@@ -1,0 +1,6 @@
+h1 = @league.name
+h2 = "Commissioner: #{@league.commissioner.full_name}"
+h2 Members
+ul
+  - @league.normal_members.each do |member|
+    li = member.full_name

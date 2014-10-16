@@ -1,0 +1,92 @@
+//CONTENT LABORATORY BUTTON STYLES
+
+//GLOBAL BUTTON STYLES
+
+  .button{
+    border: none;
+    border-radius:300px;
+    display:inline-block;
+    font-size: ($fontsize-base + 1px) !important;
+    font-weight: bold;
+    @include transition (all 0.3s ease-in-out);
+    line-height: normal;
+    padding: 10px 50px 7px;
+    -webkit-appearance: none;
+
+    &:hover{
+      color:$dark-white;
+      cursor:pointer;
+    }
+
+    &:focus{
+      border:none;
+      @include boxShadow(0 0 0, transparent);
+      outline:none;
+      text-decoration:none;
+    }
+    &.small-button {
+      padding: 5px 20px;
+    }
+    &.mini-button {
+      font-size: 10px !important;
+      padding: 3px 10px;
+    }
+  }
+
+
+//BASE BUTTON
+
+  $buttons: (
+             disabled $base-grey $dark-grey,
+             light $light-grey $dark-grey,
+             base $dark-grey $light-white,
+             blue $base-blue $light-white,
+             green $base-green $light-white,
+             whitened $light-white $base-green,
+             red $base-red $light-white
+            );
+
+  @each $button in $buttons{
+    $style: nth($button, 1);
+    $background: nth($button, 2);
+    $color: nth($button, 3);
+
+    .button-#{$style}{
+      background-color:$background;
+      color:$color;
+      @include transition ( all 0.3s ease-in-out );
+      -webkit-font-smoothing: antialiased;
+
+      &:hover{
+        background: darken($background, 5) !important;
+        color:$color !important;
+      }
+
+      &.button-disabled{ cursor:text !important; }
+    }
+  }
+
+
+//NON-BUTTON LINKS
+
+  $links: (blue $base-blue,
+           green $base-green,
+           grey $base-grey,
+           whitened $light-white
+          );
+
+  @each $link in $links {
+    $name: nth($link, 1);
+    $color: nth($link, 2);
+
+      .#{$name}-link {
+        color:$color;
+        cursor: pointer;
+        @include transition ( all 0.3s ease-in-out );
+
+      &:hover{
+        color:$color;
+        opacity:0.8;
+      }
+    }
+  }

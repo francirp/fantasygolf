@@ -1,0 +1,7 @@
+h1 Create a Team
+= simple_form_for @league do |f|
+  = f.input :name
+  = f.simple_fields_for :commissioner do |builder|
+    = builder.input :league_id, as: :hidden
+    = builder.input :type, as: :hidden
+  = f.submit

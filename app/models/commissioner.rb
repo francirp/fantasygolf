@@ -1,0 +1,3 @@
+class Commissioner < Member
+
+end

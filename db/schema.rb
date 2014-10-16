@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713165856) do
+ActiveRecord::Schema.define(version: 20141016231855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,10 +52,12 @@ ActiveRecord::Schema.define(version: 20140713165856) do
   create_table "competitors", force: true do |t|
     t.integer  "golfer_id"
     t.integer  "tournament_id"
-    t.integer  "rank"
+    t.string   "rank"
     t.float    "earnings"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "scores"
+    t.integer  "rank_num"
   end
 
   create_table "golfers", force: true do |t|
@@ -72,12 +74,21 @@ ActiveRecord::Schema.define(version: 20140713165856) do
     t.datetime "updated_at"
   end
 
+  create_table "members", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "league_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type"
+  end
+
   create_table "tournaments", force: true do |t|
     t.string   "name"
     t.date     "start_date"
     t.text     "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "par"
   end
 
   create_table "users", force: true do |t|
@@ -93,6 +104,8 @@ ActiveRecord::Schema.define(version: 20140713165856) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

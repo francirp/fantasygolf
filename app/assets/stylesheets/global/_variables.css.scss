@@ -1,0 +1,77 @@
+// PREVIOUSLY DEFINED VARIABLES
+  $emphasized-green: #5d9733;
+  $background-color: white;
+  $btn-green: $emphasized-green;
+  $text-green: #5d9a42;
+  $font-size-sm: 0.75rem;
+  $vspacing-md: 1.0rem;
+  $vspacing-sm: 0.75rem;
+  $standard-margin: 15px;
+
+  $nine-point: 12px;
+  $eleven-pt: 15px;
+  $twelve_pt: 16px;
+  $twenty_two_pt: 29px;
+
+//DEFAULT COLORS
+
+  //BLACK
+    $light-black:#444444;
+    $base-black:#000000;
+
+  //BLUE
+    $light-blue: #9FDDE5;
+    $base-blue: #40BBCB;
+    $medium-blue: #66C9D5;
+    $dark-blue: #2094A3;
+
+  //GREEEN
+    $light-green: #C9EEAC;
+    $base-green: #7AC043;
+    $medium-green: #9CDF68;
+
+  //GREY
+    // $light-grey: #808080;
+    // $dark-grey: #585858;
+    $light-grey: #EDEDED;
+    $base-grey: #CCCCCC;
+    $medium-grey: #DADFE1;
+    $dark-grey: #7C7B7B;
+
+    $header-grey: #A0AAAD;
+    $hover-grey: #EBEBEB;
+
+  //ORANGE
+    $base-red: #F46A44;
+
+  //TAN
+    $light-tan: #F6F4EF;
+    $base-tan: #F0EDE5;
+
+  //WHITE
+    $light-white: #FAFAFA;
+    $base-white: #FFFFFF;
+    $dark-white: #F5F5F5;
+
+  //TRANSPARENT
+    $transparent: transparent;
+
+//SIZES
+  // FONT-SIZES
+    $fontsize-tiny: 11px;
+    $fontsize-small: 12px;
+    $fontsize-base: 14px;
+    $fontsize-medium: 18px;
+    $fontsize-big: 24px;
+    $fontsize-bigger: 30px;
+    $fontsize-huge: 35px;
+    $fontsize-toobig: 45px;
+
+  // OTHER
+    $base-font-size: 1em;
+    $base-line-height: $base-font-size * 1.5;
+
+//BORDERS
+  $border-light-grey: 1px solid $light-grey;
+  $border-base-grey: 1px solid $base-grey;
+  $border-base-white: 1px solid $base-white;

@@ -17,7 +17,12 @@ gem 'devise_invitable'
 gem 'nokogiri'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'slim'
-
+gem 'simple_form'
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
+gem "font-awesome-rails"
+gem "quiet_assets"
 
 group :development do
   gem 'better_errors'

@@ -17,30 +17,6 @@ class Scraper
     end
   end
 
-  def self.refresh_leaderboard(args = {})
-    url = args[:url]
-    tournament = args[:tournament]
-    doc = Nokogiri::HTML(open(url))
-    rows = doc.css("#leaderboardtable tbody tr")
-    rows.each do |row|
-      link = row.css('td.player a')
-      profile_url = link.attr('href').value
-      profile_id = yahoo_id_from_url(url: profile_url, spots: 5)
-      golfer = Golfer.find_by_profile_id(profile_id)
-      unless golfer
-        golfer = Golfer.new(profile_id: profile_id)
-        golfer.name = link.text
-        golfer.save
-      end
-      competitor = tournament.competitors.build(golfer_id: golfer.id)
-      competitor.rank = row.css('.position').text.to_i
-      earnings = row.css('.earnings').text
-      earnings_formatted = currency_to_float(earnings) if earnings
-      competitor.earnings = earnings_formatted
-      competitor.save
-    end
-  end
-
   def pull_tournaments
     url = "http://sports.yahoo.com/golf/pga/leaderboard"
     doc = Nokogiri::HTML(open(url))
@@ -53,7 +29,7 @@ class Scraper
     end
   end
 
-  def currency_to_float(currency)
+  def self.currency_to_float(currency)
     currency.scan(/\d|[.]/).join.to_f
   end
 

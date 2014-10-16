@@ -14,4 +14,32 @@ ActiveAdmin.register Tournament do
     actions
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :par
+      row :start_date
+      row :url
+    end
+
+    panel("Leaderboard For This Tournament") do
+      table_for(tournament.competitors.includes(:golfer)) do
+        column :rank
+        column "Name" do |competitor|
+          link_to competitor.golfer.name, admin_competitor_path(competitor)
+        end
+        4.times do |i|
+          column "Round #{i + 1} Score" do |competitor|
+            competitor.scores[i]
+          end
+        end
+        4.times do |i|
+          column "Round #{i + 1} vs Par" do |competitor|
+            competitor.score_vs_par(score: competitor.scores[i])
+          end
+        end
+      end
+    end
+  end
+
 end
