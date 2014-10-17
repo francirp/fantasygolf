@@ -17,18 +17,6 @@ class Scraper
     end
   end
 
-  def pull_tournaments
-    url = "http://sports.yahoo.com/golf/pga/leaderboard"
-    doc = Nokogiri::HTML(open(url))
-    options = doc.css("select[name='tour_event'] option")
-    options.each do |option|
-      path = option.attr('value')
-      name = option.text
-      tournament = Tournament.new(url: "http://sports.yahoo.com#{path}", name: name)
-      tournament.save
-    end
-  end
-
   def self.currency_to_float(currency)
     currency.scan(/\d|[.]/).join.to_f
   end

@@ -8,8 +8,8 @@ module Scrapers
       attr_accessor :tournament
 
       def initialize(args = {})
-        @url = args[:url]
         @tournament = args[:tournament]
+        @url = args.fetch(:url, @tournament.url)
       end
 
       def doc
@@ -22,6 +22,11 @@ module Scrapers
 
       def par
         doc.css("#leaderboard .par span").text.to_i
+      end
+
+      def start_date
+        raw_date = doc.css(".yspTitleBar").text
+        DateParser.new(raw_date).date
       end
 
       def refresh
@@ -68,6 +73,7 @@ module Scrapers
         g = Golfer.new(profile_id: profile_id)
         g.name = link.text
         g.save
+        g
       end
 
       def earnings

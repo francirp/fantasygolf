@@ -1,6 +1,6 @@
 ActiveAdmin.register Tournament do
 
-  config.sort_order = "start_date_desc"
+  config.sort_order = "start_date_asc"
 
   permit_params :name, :start_date, :url
 
