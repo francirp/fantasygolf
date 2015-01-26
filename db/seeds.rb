@@ -8,5 +8,5 @@ end
 SportsDataApiWrapper::Season.new(year: 2015).sync_to_db
 
 MODELS.each do |model|
-  "There are now #{model.count} #{model.name.pluralize} in the database"
+  puts "There are now #{model.count} #{model.name.pluralize} in the database"
 end

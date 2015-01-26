@@ -12,10 +12,10 @@ module SportsDataApiWrapper
     end
 
     def sync_to_db
-      # season.tournaments.each do |api_tournament|
-      #   return if Tournament.find_by_sports_data_api_id(api_tournament.id)
-      #   create_tournament(api_tournament)
-      # end
+      season.tournaments.each do |api_tournament|
+        return if Tournament.find_by_sports_data_api_id(api_tournament.id)
+        create_tournament(api_tournament)
+      end
       create_players
     end
 
@@ -50,7 +50,7 @@ module SportsDataApiWrapper
           zipcode: api_venue.zipcode,
           country: api_venue.country
         })
-        create_courses(api_venue.id, api_venue.courses)
+        create_courses(venue.id, api_venue.courses)
         return venue
       end
 
