@@ -15,8 +15,10 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
-PATH
-  remote: /users/ryanfrancis/documents/coding/sports_data_api
+GIT
+  remote: https://github.com/francirp/sports_data_api.git
+  revision: de3f9d20c1dfc52bfa178aeec79590dbb6c35478
+  branch: master
   specs:
     sports_data_api (0.2.0)
       multi_json (~> 1.10.1)
