@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+MODELS = [Tournament, Venue, Course, Hole, Golfer, Competitor]
+MODELS.each do |model|
+  name = model.name
+  model.destroy_all
+  puts "Successfully destroyed #{name} data."
+end
+
+SportsDataApiWrapper::Season.new(year: 2015).sync_to_db
+
+MODELS.each do |model|
+  "There are now #{model.count} #{model.name.pluralize} in the database"
+end

@@ -1,6 +1,7 @@
 class Tournament < ActiveRecord::Base
   has_many :competitors
   has_many :golfers, through: :competitors
+  belongs_to :venue
 
   def refresh_leaderboard
     Scrapers::Yahoo::Leaderboard.new(tournament: self, url: url).refresh

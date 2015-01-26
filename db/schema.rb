@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016231855) do
+ActiveRecord::Schema.define(version: 20150126040948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -60,13 +61,69 @@ ActiveRecord::Schema.define(version: 20141016231855) do
     t.integer  "rank_num"
   end
 
-  create_table "golfers", force: true do |t|
+  create_table "courses", force: true do |t|
+    t.string   "sports_data_api_id"
     t.string   "name"
-    t.integer  "rank"
+    t.integer  "yardage"
+    t.integer  "par"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "profile_id"
+    t.integer  "venue_id"
   end
+
+  create_table "golfers", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "sports_data_api_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "height"
+    t.integer  "weight"
+    t.date     "birthday"
+    t.string   "country"
+    t.string   "residence"
+    t.string   "birth_place"
+    t.boolean  "member"
+    t.date     "updated"
+    t.string   "college"
+    t.integer  "turned_pro"
+    t.integer  "seed"
+    t.string   "ball_maker"
+    t.string   "club_maker"
+    t.float    "drive_avg"
+    t.integer  "cuts_made"
+    t.integer  "cuts"
+    t.float    "drive_acc"
+    t.integer  "earnings_rank"
+    t.integer  "events_played"
+    t.integer  "points_rank"
+    t.integer  "points"
+    t.integer  "first_place"
+    t.float    "gir_pct"
+    t.float    "hole_proximity_avg"
+    t.float    "scoring_avg"
+    t.float    "scrambling_pct"
+    t.float    "earnings"
+    t.integer  "second_place"
+    t.float    "strokes_gained"
+    t.integer  "third_place"
+    t.integer  "top_10"
+    t.integer  "top_25"
+    t.integer  "withdrawals"
+    t.integer  "world_rank"
+  end
+
+  create_table "holes", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "number"
+    t.integer  "par"
+    t.integer  "yardage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "holes", ["course_id"], name: "index_holes_on_course_id", using: :btree
 
   create_table "leagues", force: true do |t|
     t.string   "name"
@@ -85,10 +142,18 @@ ActiveRecord::Schema.define(version: 20141016231855) do
   create_table "tournaments", force: true do |t|
     t.string   "name"
     t.date     "start_date"
-    t.text     "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "par"
+    t.string   "sports_data_api_id"
+    t.string   "event_type"
+    t.float    "purse"
+    t.float    "winning_share"
+    t.date     "end_date"
+    t.integer  "venue_id"
+    t.integer  "year"
+    t.float    "points"
+    t.string   "status"
+    t.string   "coverage"
   end
 
   create_table "users", force: true do |t|
@@ -110,5 +175,16 @@ ActiveRecord::Schema.define(version: 20141016231855) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "venues", force: true do |t|
+    t.string   "sports_data_api_id"
+    t.string   "name"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

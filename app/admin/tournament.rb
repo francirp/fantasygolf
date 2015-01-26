@@ -2,7 +2,7 @@ ActiveAdmin.register Tournament do
 
   config.sort_order = "start_date_asc"
 
-  permit_params :name, :start_date, :url
+  permit_params :name, :event_type, :purse, :winning_share, :points, :start_date, :end_date, :venue_id, :year,
 
   index do
     selectable_column

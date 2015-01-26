@@ -23,6 +23,7 @@ gem 'neat'
 gem 'bitters'
 gem "font-awesome-rails"
 gem "quiet_assets"
+gem "sports_data_api", path: '/users/ryanfrancis/documents/coding/sports_data_api'
 
 group :development do
   gem 'better_errors'
